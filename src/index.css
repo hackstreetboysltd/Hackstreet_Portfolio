@@ -1,0 +1,116 @@
+:root {
+  --bg: #f3f2ed;
+  --bg-work: #e9ebe5;
+  --ink: #171a1a;
+  --muted: #666a69;
+  --border: #d4d6cf;
+  --border-soft: #c4c8c2;
+  --blue: #244cff;
+  --blue-soft: #6984ff;
+  --blue-pale: #cdd7ff;
+  --blue-mist: #d6dfff;
+  --blue-wash: #e5eaff;
+  --blue-label: #d9e0ff;
+  --navy: #171d24;
+  --navy-line: #414854;
+  --navy-line-soft: #48505b;
+  --lime: #b9ff75;
+  --slate: #a9b3c3;
+  --slate-soft: #ccd1da;
+  --slate-mid: #b8c0cd;
+  --slate-ui: #7c8593;
+  --chart-soft: #ced8ff;
+  --green-ui: #278167;
+  --flow-bg: #dce6c8;
+  --flow-ink: #46513d;
+  --flow-brand: #255a38;
+  --flow-panel: #f0f4eb;
+  --relay-bg: #dad8ec;
+  --relay-brand: #5348a6;
+  --relay-panel: #f3f1fa;
+  --relay-track: #ddd9ed;
+  --relay-fill: #7161c5;
+  --dash-bg: #f8fafc;
+  --white: #ffffff;
+  --space: clamp(1.25rem, 4vw, 4rem);
+  --max: 1440px;
+  --font: "Inter", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+a {
+  font: inherit;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bar-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes progress-fill {
+  from {
+    width: 0;
+  }
+  to {
+    width: 58%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
