@@ -180,11 +180,12 @@
 .hero-visual__connectors {
   position: absolute;
   left: 29.81%;
-  right: 18.85%;
   top: 41.59%;
-  bottom: 15.23%;
-  width: auto;
-  height: auto;
+  /* Explicit % size so <img> scales with the stage (intrinsic size breaks mobile). */
+  width: 51.34%;
+  height: 43.18%;
+  object-fit: fill;
+  pointer-events: none;
 }
 
 .hero-visual__browser {
@@ -859,6 +860,14 @@
   transform: translateY(-1px);
 }
 
+.nav__menu-btn {
+  display: none;
+}
+
+.mobile-menu {
+  display: none;
+}
+
 .animate-rise {
   animation: rise 700ms ease both;
 }
@@ -867,6 +876,7 @@
   animation-delay: 100ms;
 }
 
+/* Tablet / laptop-narrow: stack columns, keep desktop chrome otherwise */
 @media (max-width: 1100px) {
   .nav__links {
     display: none;
@@ -919,21 +929,450 @@
   }
 }
 
-@media (max-width: 720px) {
-  .metrics {
-    grid-template-columns: 1fr;
+/*
+  Mobile: Tesla-style compact header + full-screen menu, single column,
+  no horizontal overflow, fluid type, full-width CTAs.
+*/
+@media (max-width: 768px) {
+  :root {
+    --space: 1.25rem;
+  }
+
+  html,
+  body {
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  .page {
+    overflow-x: clip;
+  }
+
+  .nav,
+  .hero,
+  .expertise,
+  .work,
+  .about,
+  .contact,
+  .footer {
+    padding-left: max(1.25rem, env(safe-area-inset-left));
+    padding-right: max(1.25rem, env(safe-area-inset-right));
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    min-height: 64px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .nav__talk {
+    display: none;
+  }
+
+  .nav__menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--cream-text);
+    cursor: pointer;
+  }
+
+  .nav__menu-btn span,
+  .nav__menu-btn span::before,
+  .nav__menu-btn span::after {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+
+  .nav__menu-btn span {
+    position: relative;
+  }
+
+  .nav__menu-btn span::before,
+  .nav__menu-btn span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .nav__menu-btn span::before {
+    top: -6px;
+  }
+
+  .nav__menu-btn span::after {
+    top: 6px;
+  }
+
+  .nav__menu-btn span.is-open {
+    background: transparent;
+  }
+
+  .nav__menu-btn span.is-open::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .nav__menu-btn span.is-open::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .wordmark__mark {
+    font-size: 1.75rem;
+  }
+
+  .wordmark__text span:first-child {
+    font-size: 0.75rem;
+  }
+
+  .wordmark__text span:last-child {
+    font-size: 0.5625rem;
+  }
+
+  .mobile-menu {
+    display: block;
+    position: fixed;
+    inset: 64px 0 0;
+    z-index: 35;
+    width: 100%;
+    max-width: 100vw;
+    background: rgba(11, 34, 75, 0.98);
+    padding: 1.5rem 1.25rem calc(2rem + env(safe-area-inset-bottom));
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 220ms ease, visibility 220ms ease;
+  }
+
+  .mobile-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .mobile-menu__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .mobile-menu__nav > a:not(.btn) {
+    display: flex;
+    align-items: center;
+    min-height: 52px;
+    padding: 0.75rem 0.25rem;
+    border-bottom: 1px solid var(--navy-line);
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--cream-text);
+  }
+
+  .mobile-menu__cta {
+    margin-top: 1.5rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .hero {
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+    gap: 1.5rem;
+  }
+
+  .hero__columns {
+    gap: 2.5rem;
+  }
+
+  .hero__copy h1 {
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+    letter-spacing: -0.04em;
+  }
+
+  .hero__lede {
+    margin: 1.25rem 0;
+    font-size: 1.0625rem;
+  }
+
+  .hero-visual {
+    width: min(100%, 360px);
+    max-width: 100%;
+  }
+
+  .hero-visual__browser,
+  .hero-visual__mobile,
+  .hero-visual__database {
+    animation-duration: 7s;
+  }
+
+  .hero-visual__node {
+    min-width: 0;
+    width: 1.5%;
+  }
+
+  .expertise,
+  .work {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .expertise__intro h2,
+  .section-heading h2 {
+    font-size: clamp(1.875rem, 8vw, 2.5rem);
+  }
+
+  .section-heading {
+    align-items: flex-start;
+  }
+
+  .section-aside {
+    max-width: none;
+  }
+
+  .service-card {
+    min-height: 0;
+  }
+
+  .service-visual {
+    height: 6rem;
+  }
+
+  /* Square Meridian mock: lock the frame, keep a compact desktop-like UI inside. */
+  .project--meridian .meridian {
+    aspect-ratio: 1 / 1;
+    padding: 0.85rem;
+    overflow: hidden;
+    display: grid;
+  }
+
+  .project--meridian .dashboard {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project--meridian .dashboard__toolbar {
+    flex-shrink: 0;
+    padding: 0.55rem 0.75rem;
+  }
+
+  .project--meridian .dashboard__toolbar span:nth-child(2) {
+    display: none;
+  }
+
+  .project--meridian .dashboard__body {
+    flex: 1;
+    min-height: 0;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+  }
+
+  .project--meridian .dashboard__side {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0.55rem;
+    padding: 0.6rem 0.45rem;
+    font-size: 0.5rem;
+    overflow: hidden;
+  }
+
+  .project--meridian .dashboard__main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 0.55rem;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .project--meridian .dashboard__greeting {
+    flex-shrink: 0;
+  }
+
+  .project--meridian .dashboard__greeting strong {
+    font-size: 0.8rem;
+  }
+
+  .project--meridian .metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.35rem;
+    flex-shrink: 0;
+  }
+
+  .project--meridian .metrics > div {
+    padding: 0.4rem;
+    gap: 0.15rem;
+  }
+
+  .project--meridian .metrics span {
+    font-size: 0.42rem;
+  }
+
+  .project--meridian .metrics strong {
+    font-size: 0.9rem;
+  }
+
+  .project--meridian .metrics em {
+    font-size: 0.38rem;
+  }
+
+  .project--meridian .chart-panel {
+    padding: 0.45rem;
+    min-height: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .project--meridian .chart-panel__title {
+    margin-bottom: 0.3rem;
+    font-size: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .project--meridian .chart {
+    gap: 0.25rem;
+    min-height: 0;
+    flex: 1;
+    height: auto;
+  }
+
+  .project--meridian .chart__bar {
+    max-height: 100%;
+  }
+
+  .project--meridian .chart__axis {
+    margin-top: 0.25rem;
+    font-size: 0.38rem;
+    flex-shrink: 0;
+  }
+
+  .project--meridian .status-row {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.48rem;
+    gap: 0.35rem;
+    flex-shrink: 0;
+  }
+
+  .dashboard__toolbar,
+  .dashboard__main,
+  .status-row,
+  .mini-app__header,
+  .balance__row,
+  .txn,
+  .doc-row,
+  .progress-card__top {
+    gap: 0.75rem;
+  }
+
+  .preview {
+    padding: 1.25rem;
+  }
+
+  .mini-app {
+    min-height: 0;
+    padding: 1.125rem;
+  }
+
+  .balance__row {
+    flex-wrap: wrap;
+  }
+
+  .balance__row strong {
+    font-size: 1.75rem;
+  }
+
+  .about {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .about h2 {
+    font-size: clamp(2rem, 9vw, 2.75rem);
+  }
+
+  .about__copy {
+    padding-top: 0;
+    font-size: 1.0625rem;
+  }
+
+  .contact {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .contact__row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact h2 {
+    font-size: clamp(2.25rem, 11vw, 3.25rem);
   }
 
   .btn {
     width: 100%;
     justify-content: space-between;
+    min-height: 48px;
   }
 
-  .chart {
-    gap: 0.35rem;
+  .footer {
+    padding-top: 2rem;
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom));
   }
 
   .footer__links {
     flex-wrap: wrap;
+    gap: 1rem 1.25rem;
+  }
+
+  .footer__legal {
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 420px) {
+  .wordmark__text {
+    max-width: 7.5rem;
+  }
+
+  .hero__copy h1 {
+    font-size: 2.35rem;
+  }
+
+  .project--meridian .dashboard__body {
+    grid-template-columns: 4.25rem minmax(0, 1fr);
+  }
+
+  .project--meridian .dashboard__side {
+    display: flex;
+    padding: 0.65rem 0.4rem;
+    gap: 0.55rem;
+  }
+
+  .project--meridian .chart {
+    height: 3.75rem;
   }
 }

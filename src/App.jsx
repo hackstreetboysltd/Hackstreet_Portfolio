@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 const chartHeights = [37, 61, 48, 80, 67, 97, 75, 110, 94, 123, 107, 138]
 
 function Arrow({ className = '' }) {
@@ -41,10 +43,19 @@ function HeroVisual() {
 }
 
 export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    document.body.classList.toggle('menu-open', menuOpen)
+    return () => document.body.classList.remove('menu-open')
+  }, [menuOpen])
+
+  const closeMenu = () => setMenuOpen(false)
+
   return (
-    <div className="page">
+    <div className={`page ${menuOpen ? 'page--menu-open' : ''}`}>
       <header className="nav">
-        <a className="wordmark" href="#top" id="top">
+        <a className="wordmark" href="#top" id="top" onClick={closeMenu}>
           <span className="wordmark__mark">h/b</span>
           <span className="wordmark__text">
             <span>HACKSTREET BOYS</span>
@@ -56,11 +67,43 @@ export default function App() {
           <a href="#work">Selected work</a>
           <a href="#about">About us</a>
         </nav>
-        <a className="btn btn--outline" href="#contact">
+        <a className="btn btn--outline nav__talk" href="#contact">
           Let’s talk
           <Arrow />
         </a>
+        <button
+          type="button"
+          className="nav__menu-btn"
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span className={menuOpen ? 'is-open' : undefined} />
+        </button>
       </header>
+
+      <div
+        id="mobile-menu"
+        className={`mobile-menu ${menuOpen ? 'is-open' : ''}`}
+        aria-hidden={!menuOpen}
+      >
+        <nav className="mobile-menu__nav" aria-label="Mobile">
+          <a href="#expertise" onClick={closeMenu}>
+            Expertise
+          </a>
+          <a href="#work" onClick={closeMenu}>
+            Selected work
+          </a>
+          <a href="#about" onClick={closeMenu}>
+            About us
+          </a>
+          <a className="btn btn--gold mobile-menu__cta" href="#contact" onClick={closeMenu}>
+            Let’s talk
+            <Arrow />
+          </a>
+        </nav>
+      </div>
 
       <section className="hero">
         <p className="eyebrow animate-rise">
