@@ -1,7 +1,43 @@
 const chartHeights = [37, 61, 48, 80, 67, 97, 75, 110, 94, 123, 107, 138]
 
 function Arrow({ className = '' }) {
-  return <span className={`arrow ${className}`} aria-hidden="true">↗</span>
+  return (
+    <span className={`arrow ${className}`} aria-hidden="true">
+      ↗
+    </span>
+  )
+}
+
+function HeroVisual() {
+  return (
+    <div className="hero-visual" aria-hidden="true">
+      <img className="hero-visual__connectors" src="/assets/connectors.svg" alt="" />
+      <img
+        className="hero-visual__browser"
+        src="/assets/hero-browser.svg"
+        alt=""
+        width="281"
+        height="204"
+      />
+      <img
+        className="hero-visual__mobile"
+        src="/assets/hero-mobile.svg"
+        alt=""
+        width="82"
+        height="148"
+      />
+      <img
+        className="hero-visual__database"
+        src="/assets/hero-database.svg"
+        alt=""
+        width="84"
+        height="62"
+      />
+      <img className="hero-visual__node hero-visual__node--1" src="/assets/node1.svg" alt="" />
+      <img className="hero-visual__node hero-visual__node--2" src="/assets/node2.svg" alt="" />
+      <img className="hero-visual__node hero-visual__node--3" src="/assets/node3.svg" alt="" />
+    </div>
+  )
 }
 
 export default function App() {
@@ -20,16 +56,18 @@ export default function App() {
           <a href="#work">Selected work</a>
           <a href="#about">About us</a>
         </nav>
-        <a className="btn btn--primary" href="#contact">
+        <a className="btn btn--outline" href="#contact">
           Let’s talk
           <Arrow />
         </a>
       </header>
 
       <section className="hero">
-        <p className="eyebrow hero__eyebrow animate-rise">
-          <span className="dot" aria-hidden="true">●</span>
-          INDEPENDENT THINKING. EXCEPTIONAL ENGINEERING.
+        <p className="eyebrow animate-rise">
+          <span className="dot" aria-hidden="true">
+            ●
+          </span>
+          INDEPENDENT SOFTWARE STUDIO
         </p>
         <div className="hero__columns">
           <div className="hero__copy animate-rise delay-1">
@@ -37,155 +75,74 @@ export default function App() {
               Good ideas.
               <br />
               Great software.
-              <br />
-              Real impact.
             </h1>
             <p className="hero__lede">
-              We’re Hackstreet Boys Limited. We turn complex challenges into
-              thoughtful software that moves your business forward.
+              Software, products and cloud.
+              <br />
+              Built around you.
             </p>
-            <div className="hero__actions">
-              <a className="btn btn--primary" href="#work">
-                Explore our work
-                <Arrow />
-              </a>
-              <a className="btn btn--ghost" href="#about">
-                Meet the team
-                <Arrow />
-              </a>
-            </div>
+            <a className="btn btn--gold" href="#work">
+              Explore our work
+              <Arrow />
+            </a>
           </div>
-          <aside className="manifesto animate-rise delay-2">
-            <div className="manifesto__header">
-              <span>H/B — ENGINEERING STUDIO</span>
-              <Arrow className="arrow--lime" />
-            </div>
-            <h2>
-              Built with
-              <br />
-              intent.
-              <br />
-              Made to
-              <br />
-              matter.
-            </h2>
-            <div className="manifesto__status">
-              <div>
-                <span>01 / THINK</span>
-                <span>Find the right problem</span>
-              </div>
-              <div>
-                <span>02 / BUILD</span>
-                <span>Engineer the right solution</span>
-              </div>
-              <div>
-                <span>03 / EVOLVE</span>
-                <span>Keep getting better</span>
-              </div>
-            </div>
-          </aside>
-        </div>
-        <div className="hero__footnote">
-          <span>YOUR AMBITION. OUR NEXT CHALLENGE.</span>
-          <span>SCROLL TO EXPLORE ↓</span>
+          <HeroVisual />
         </div>
       </section>
 
-      <div className="capabilities" aria-label="Capabilities">
-        <span>SOFTWARE ENGINEERING</span>
-        <span className="capabilities__sep">+</span>
-        <span>DIGITAL PRODUCTS</span>
-        <span className="capabilities__sep">+</span>
-        <span>CLOUD &amp; INFRASTRUCTURE</span>
-        <span className="capabilities__sep">+</span>
-        <span>BUSINESS SOLUTIONS</span>
-      </div>
-
-      <section className="section expertise" id="expertise">
-        <div className="section__heading">
-          <div>
-            <p className="label">01 / WHAT WE DO</p>
-            <h2>
-              Complex problems.
-              <br />
-              Clear solutions.
-            </h2>
-          </div>
-          <p className="section__aside">
-            From the first sketch to the next release, we bring product thinking
-            and engineering rigour to every stage of your journey.
-          </p>
+      <section className="expertise" id="expertise">
+        <div className="expertise__intro">
+          <p className="label label--green">01 / EXPERTISE</p>
+          <h2>Built for what’s next.</h2>
         </div>
         <div className="service-grid">
-          <article className="service-card">
-            <div className="service-card__top">
-              <span className="label">01</span>
-              <Arrow />
+          <article className="service-card service-card--blue">
+            <div className="service-visual">
+              <img src="/assets/hero-browser.svg" alt="" width="160" height="116" />
             </div>
             <h3>Custom software</h3>
             <p>
-              Purpose-built platforms, web applications and business systems.
-              Designed around how you actually work.
+              Platforms and integrations,
+              <br />
+              built for your business.
             </p>
-            <p className="meta">WEB PLATFORMS / APIS / INTEGRATIONS</p>
           </article>
-          <article className="service-card">
-            <div className="service-card__top">
-              <span className="label">02</span>
-              <Arrow />
+          <article className="service-card service-card--green">
+            <div className="service-visual">
+              <img src="/assets/hero-mobile.svg" alt="" width="56" height="100" />
             </div>
             <h3>Digital products</h3>
             <p>
-              Intuitive experiences, from concept to launch. We connect user
-              needs with your business ambitions.
+              Thoughtful experiences,
+              <br />
+              from idea to launch.
             </p>
-            <p className="meta">PRODUCT STRATEGY / UX / MOBILE</p>
           </article>
-          <article className="service-card">
-            <div className="service-card__top">
-              <span className="label">03</span>
-              <Arrow />
+          <article className="service-card service-card--tan">
+            <div className="service-visual">
+              <img src="/assets/hero-database.svg" alt="" width="88" height="64" />
             </div>
             <h3>Cloud &amp; scale</h3>
             <p>
-              Reliable foundations for what’s next. Modern infrastructure that
-              grows with your business.
+              Reliable infrastructure,
+              <br />
+              ready to grow.
             </p>
-            <p className="meta">CLOUD / DEVOPS / MODERNISATION</p>
           </article>
         </div>
       </section>
 
       <section className="work" id="work">
-        <div className="section__heading">
+        <div className="section-heading">
           <div>
-            <p className="label">02 / SELECTED CONCEPTS</p>
-            <h2>Ideas into interfaces.</h2>
+            <p className="label label--gold">02 / SELECTED CONCEPTS</p>
+            <h2>Selected concepts.</h2>
           </div>
-          <p className="section__aside section__aside--sm">
-            A glimpse of what we can build together.
-            <br />
-            Illustrative concepts, not client engagements.
-          </p>
+          <p className="section-aside">Illustrative concepts, not client work.</p>
         </div>
 
         <article className="project project--meridian">
           <div className="meridian">
-            <div className="meridian__copy">
-              <p className="meridian__tag">MERIDIAN</p>
-              <h3>
-                Less admin.
-                <br />
-                More momentum.
-              </h3>
-              <p>
-                One connected workspace for the people keeping business moving.
-              </p>
-              <div className="chips">
-                <span>WEB APPLICATION</span>
-                <span>B2B</span>
-              </div>
-            </div>
             <div className="dashboard" aria-hidden="true">
               <div className="dashboard__toolbar">
                 <strong>meridian</strong>
@@ -230,7 +187,7 @@ export default function App() {
                     <div className="chart">
                       {chartHeights.map((height, index) => (
                         <div
-                          key={height + index}
+                          key={`${height}-${index}`}
                           className={`chart__bar ${index >= 9 ? 'chart__bar--hot' : ''}`}
                           style={{
                             height: `${height}px`,
@@ -257,18 +214,15 @@ export default function App() {
           </div>
           <div className="project__caption">
             <div>
-              <h4>Meridian — Operations, connected.</h4>
-              <p className="meta">
-                PRODUCT STRATEGY &nbsp;/&nbsp; UX &amp; UI &nbsp;/&nbsp; FULL-STACK
-                ENGINEERING
-              </p>
+              <h4>Meridian</h4>
+              <p className="meta">OPERATIONS PLATFORM</p>
             </div>
             <span className="project__index">01 &nbsp;↗</span>
           </div>
         </article>
 
         <div className="project-grid">
-          <article className="project project--flow">
+          <article className="project">
             <div className="preview preview--flow">
               <div className="preview__label">
                 <span>FLOWPAY / FINTECH</span>
@@ -305,14 +259,12 @@ export default function App() {
               </div>
             </div>
             <div className="project__caption project__caption--stack">
-              <h4>Flowpay — Finance without friction.</h4>
-              <p className="meta">
-                FINTECH &nbsp;/&nbsp; WEB APPLICATION &nbsp;/&nbsp; INTEGRATIONS
-              </p>
+              <h4>Flowpay</h4>
+              <p className="meta">FINANCE APPLICATION</p>
             </div>
           </article>
 
-          <article className="project project--relay">
+          <article className="project">
             <div className="preview preview--relay">
               <div className="preview__label">
                 <span>RELAY / CUSTOMER EXPERIENCE</span>
@@ -324,9 +276,7 @@ export default function App() {
                   <span>Home &nbsp;&nbsp; Requests &nbsp;&nbsp; Documents</span>
                 </div>
                 <h3>Hello, Alex.</h3>
-                <p className="mini-app__lede">
-                  Everything you need. All in one place.
-                </p>
+                <p className="mini-app__lede">Everything you need. All in one place.</p>
                 <div className="progress-card">
                   <div className="progress-card__top">
                     <strong>Your website redesign</strong>
@@ -348,63 +298,9 @@ export default function App() {
               </div>
             </div>
             <div className="project__caption project__caption--stack">
-              <h4>Relay — A better way to connect.</h4>
-              <p className="meta">
-                CUSTOMER PORTAL &nbsp;/&nbsp; UX &amp; UI &nbsp;/&nbsp; DEVELOPMENT
-              </p>
+              <h4>Relay</h4>
+              <p className="meta">CUSTOMER PORTAL</p>
             </div>
-          </article>
-        </div>
-      </section>
-
-      <section className="section approach" id="approach">
-        <div className="section__heading">
-          <div>
-            <p className="label">03 / HOW WE WORK</p>
-            <h2>
-              No black boxes.
-              <br />
-              Just good collaboration.
-            </h2>
-          </div>
-          <p className="section__aside">
-            You bring the vision. We bring the craft.
-            <br />
-            Together, we make the right thing happen.
-          </p>
-        </div>
-        <div className="stages">
-          <article>
-            <p className="label">01 ──</p>
-            <h3>Discover</h3>
-            <p>
-              We ask the right questions, get to know your business, and define
-              what success looks like.
-            </p>
-          </article>
-          <article>
-            <p className="label">02 ──</p>
-            <h3>Design</h3>
-            <p>
-              We turn the challenge into a clear plan and thoughtful experiences
-              your users will love.
-            </p>
-          </article>
-          <article>
-            <p className="label">03 ──</p>
-            <h3>Develop</h3>
-            <p>
-              We build, test, and iterate in the open. Working software, with
-              you in the loop.
-            </p>
-          </article>
-          <article>
-            <p className="label">04 ──</p>
-            <h3>Deliver &amp; evolve</h3>
-            <p>
-              We launch with care, measure what matters, and keep making things
-              better.
-            </p>
           </article>
         </div>
       </section>
@@ -412,79 +308,39 @@ export default function App() {
       <section className="about" id="about">
         <div className="about__columns">
           <div>
-            <p className="label label--lime">04 / THE PEOPLE BEHIND THE PIXELS</p>
+            <p className="label label--gold">03 / ABOUT</p>
             <h2>
-              Serious about craft.
+              Small team.
               <br />
-              Human at heart.
+              Serious craft.
             </h2>
           </div>
-          <div className="about__philosophy">
-            <h3>
-              A software partner.
-              <br />
-              Not just another vendor.
-            </h3>
-            <p>
-              Hackstreet Boys Limited brings engineering, design, and
-              problem-solving together to create software with purpose. We get
-              close to your challenges and stay focused on the people who use
-              what we build.
-            </p>
-          </div>
-        </div>
-        <div className="principles">
-          <article>
-            <h4>Think like a partner</h4>
-            <p>Your goals become our shared ambition.</p>
-          </article>
-          <article>
-            <h4>Build for the long run</h4>
-            <p>Clean, considered, and made to evolve.</p>
-          </article>
-          <article>
-            <h4>Keep it human</h4>
-            <p>Clear conversations. No unnecessary jargon.</p>
-          </article>
+          <p className="about__copy">
+            An independent team of designers and engineers.
+            <br />
+            Your partner from first idea to launch.
+          </p>
         </div>
       </section>
 
       <section className="contact" id="contact">
-        <p className="label label--soft">05 / SOMETHING ON YOUR MIND?</p>
+        <p className="label label--contact">04 / CONTACT</p>
         <div className="contact__row">
           <h2>
             Let’s build
             <br />
             what’s next.
           </h2>
-          <div className="contact__aside">
-            <p>
-              A bold idea. A tricky challenge.
-              <br />
-              A product ready for its next chapter.
-              <br />
-              We’d love to hear about it.
-            </p>
-            <a className="btn btn--white" href="mailto:hello@hackstreetboys.com">
-              Tell us about your project
-              <Arrow />
-            </a>
-          </div>
-        </div>
-        <div className="contact__closing">
-          <span>GOOD SOFTWARE STARTS WITH A CONVERSATION.</span>
-          <a href="mailto:hello@hackstreetboys.com">
-            YOUR NEXT CHAPTER STARTS HERE ↗
+          <a className="btn btn--navy" href="mailto:hello@hackstreetboys.com">
+            Start a conversation
+            <Arrow />
           </a>
         </div>
       </section>
 
       <footer className="footer">
         <div className="footer__top">
-          <div>
-            <strong>Hackstreet Boys Limited</strong>
-            <p>Software with purpose. Built together.</p>
-          </div>
+          <strong>Hackstreet Boys Limited</strong>
           <nav className="footer__links" aria-label="Footer">
             <a href="#expertise">Expertise</a>
             <a href="#work">Selected work</a>
@@ -492,10 +348,9 @@ export default function App() {
             <a href="#top">Back to top ↑</a>
           </nav>
         </div>
-        <div className="footer__legal">
-          <span>© 2026 Hackstreet Boys Limited. All rights reserved.</span>
-          <span className="meta">INDEPENDENT MINDS. CONNECTED BY CRAFT.</span>
-        </div>
+        <p className="footer__legal">
+          © 2026 Hackstreet Boys Limited. All rights reserved.
+        </p>
       </footer>
     </div>
   )

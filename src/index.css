@@ -1,26 +1,21 @@
 :root {
-  --bg: #f3f2ed;
-  --bg-work: #e9ebe5;
-  --ink: #171a1a;
-  --muted: #666a69;
-  --border: #d4d6cf;
-  --border-soft: #c4c8c2;
-  --blue: #244cff;
-  --blue-soft: #6984ff;
-  --blue-pale: #cdd7ff;
-  --blue-mist: #d6dfff;
-  --blue-wash: #e5eaff;
-  --blue-label: #d9e0ff;
-  --navy: #171d24;
-  --navy-line: #414854;
-  --navy-line-soft: #48505b;
-  --lime: #b9ff75;
-  --slate: #a9b3c3;
-  --slate-soft: #ccd1da;
-  --slate-mid: #b8c0cd;
-  --slate-ui: #7c8593;
-  --chart-soft: #ced8ff;
-  --green-ui: #278167;
+  --navy: #0e2858;
+  --navy-deep: #0b224b;
+  --navy-panel: #193c77;
+  --navy-line: #344e77;
+  --cream: #f3f0e7;
+  --cream-text: #f5f4ee;
+  --gold: #d5b777;
+  --gold-btn: #e1c894;
+  --gold-band: #dcc18b;
+  --muted: #b7c5dd;
+  --ink: #0e2858;
+  --body: #4f605f;
+  --label-green: #3c6258;
+  --contact-label: #344753;
+  --card-blue: #e2e9f3;
+  --card-green: #dfe8dd;
+  --card-tan: #ede1cb;
   --flow-bg: #dce6c8;
   --flow-ink: #46513d;
   --flow-brand: #255a38;
@@ -30,12 +25,16 @@
   --relay-panel: #f3f1fa;
   --relay-track: #ddd9ed;
   --relay-fill: #7161c5;
-  --dash-bg: #f8fafc;
+  --slate-ui: #7c8593;
+  --green-ui: #278167;
+  --chart-soft: #ced8ff;
+  --chart-hot: #244cff;
   --white: #ffffff;
   --space: clamp(1.25rem, 4vw, 4rem);
   --max: 1440px;
   --font: "Inter", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --radius-pill: 999px;
 }
 
 *,
@@ -51,8 +50,8 @@ html {
 body {
   margin: 0;
   font-family: var(--font);
-  background: var(--bg);
-  color: var(--ink);
+  background: var(--navy);
+  color: var(--cream-text);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -75,11 +74,56 @@ img {
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes float-up {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes float-down {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes pulse-node {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  13%,
+  53% {
+    opacity: 0.45;
+  }
+  27%,
+  67% {
+    opacity: 1;
   }
 }
 
