@@ -354,7 +354,7 @@ export default function App() {
           </p>
           <div className="footer__socials" aria-label="Social links">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/_.hackstreetboys"
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
